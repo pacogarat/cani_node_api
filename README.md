@@ -8,3 +8,7 @@ npm install
 
 ### Arrancar la aplicación
 npm run dev
+
+### Postman
+Archivo -> importar 
+fichero: cani.postman_collection.json 
