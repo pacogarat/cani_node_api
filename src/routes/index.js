@@ -26,7 +26,6 @@ const deleteMessage = async (message_id) => {
 const insertMessage = async (message) => {
     console.log("Inserting doc "+message.text+" into API");
     const message_api = await (await insertAPIMock(message.text)).json();
-    console.debug("result api");
     console.debug(message_api);
     message.external_id = message_api.id;
     const result = colMessages.insertOne(message);
@@ -84,14 +83,14 @@ const updateAPIMock = (external_id, text) => {
         body: JSON.stringify({ "message": text })
     });
 }
-const insertAPIMock = async (message) => {
-    console.log("Insert API doc with text: "+message.text);
+const insertAPIMock = async (txt) => {
+    console.log("Insert API doc with text: "+txt);
     return fetch(externalUri, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ "message": message.text })
+        body: JSON.stringify({ "message": txt })
     });
 }
 
@@ -169,6 +168,7 @@ router
             const message = {
                 text: text
             };
+            console.debug(message);
             const result = await insertMessage(message);
             res.status(201).json(result);
         } catch(e) {

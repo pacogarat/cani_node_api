@@ -1,0 +1,48 @@
+He creado una api en Nodejs que por detrás tiene un mongoDB para la persistencia y consume una api externa (MockAPI).
+Los datos que trata la aplicación son mensajes (un texto por mensaje)
+
+Modelo de datos:
+    En MongoDB se guarda por cada mensaje:
+        _id:            clave primaria del documento - identificador de recursos de la aplicación
+        text:           texto del mensaje
+        external_id:    clave del mensaje en la api externa (en caso de estar en ella) - identificador de recursos en la MOCKAPI
+
+    En la API externa:
+        id:         clave primaria
+        message:    texto del mensaje
+
+Endpoints de la aplicación:
+
+    Inicialización/Datos de prueba:
+        - GET http://localhost:3000/message/init (Debería ser un POST ya que crea documentos en MongoDB)
+            Limpia lo que tuviera la colección de MongoDB, trae todos los documentos de la API y los inserta en MongoDB. Antes elimina lo que hubiera en mongodb
+            Los ids de MongoDB se crean nuevos.
+            Se debería llamar solo la primera vez si se quieren tener datos de prueba.
+    Traer un mensaje:
+        - GET http://localhost:3000/message/:id
+            Devuelve el documento de mongoDB con dicho id compuesto por _id, text, external_id (referencia al mismo objeto en MOCKAPI)
+    Crear un mensaje:
+        - POST http://localhost:3000/message
+            Crea el documento en la MOCKAPI primero para que, ya teniendo el external_id inserte el documento en MongoDB
+    Modificar un mensaje:
+        - PUT http://localhost:3000/message/:id
+            Modifica el documento en mongoDB con dicho id y, si tiene external_id, lo modifica tambien de la API, para ello tiene que traer de mongo el external_id
+    Eliminar un mensaje:
+        - DELETE http://localhost:3000/message/:id
+            Elimina el documento de mongoDB con dicho id y, si tiene external_id, lo elimina tambien de la API
+
+Los endpoints de la api externa:
+    - GET https://645c042799b618d5f32be872.mockapi.io/ej2/message
+    Devuelve todos los mensajes que hay en la api MOCKAPI
+
+    - GET https://645c042799b618d5f32be872.mockapi.io/ej2/message/:id
+    Devuelve el mensaje de MOCKAPI con dicho id
+
+    - POST https://645c042799b618d5f32be872.mockapi.io/ej2/message
+    Crea el mensaje de MOCKAPI
+
+    - PUT https://645c042799b618d5f32be872.mockapi.io/ej2/message/:id
+    Modifica el mensaje de MOCKAPI con dicho id
+
+    - DELETE https://645c042799b618d5f32be872.mockapi.io/ej2/message/:id
+    Devuelve el mensaje de MOCKAPI con dicho id
