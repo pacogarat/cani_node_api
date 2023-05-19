@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "d056c4cb-6f9c-4d97-b0d6-1c73ff652801",
+		"name": "cani",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear mensaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " \n{\n       \"text\": \"CALAMAR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET mensaje",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/message/646633e85ddbfc9b78ee8a69",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"message",
+						"646633e85ddbfc9b78ee8a69"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar mensaje",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " \n{\n       \"text\": \"CALAMAR1213\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/message/646638652201e82eb090340f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"message",
+						"646638652201e82eb090340f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE mensaje",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/message/646638652201e82eb090340f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"message",
+						"646638652201e82eb090340f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inicializar bbdd con lo que hay en la api",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/messages/init",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"messages",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MOCKAPI put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"22\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://645c042799b618d5f32be872.mockapi.io/ej2/message/21",
+					"protocol": "https",
+					"host": [
+						"645c042799b618d5f32be872",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"ej2",
+						"message",
+						"21"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
